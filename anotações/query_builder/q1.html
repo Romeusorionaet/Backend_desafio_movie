@@ -1,0 +1,80 @@
+
+
+
+<h1>Query Builder</h1>
+
+<p>
+    Query é um Construtor de Consulta.<br>
+    o Query Builder permite que você construa instruções SQL independente do banco de dados utilizado.
+</p>
+
+<p>
+    Uso o Query Builder para fazer minhas consultas de inserts, delete etc. Usando para manipular a base de dados.<br>
+    Ele por sua vez vai gerar código SQL para o banco de dados que estou utilizando.<br>
+    Se caso eu quiser mudar de banco de dado eu informo em uma linha de código ao meu Query Builder, o banco de dados 
+    que estou utilizando agora.
+</p>
+
+<h2>KNEXJS</h2>
+
+<p>
+    O Knex é a Query Builder que vamos utilizar mas precisamos instalar esta biblioteca pelo terminal.<br>
+    npm install knex --save<br>
+    Agora vamos configurar o nosso knex para que ele possa se conectar com nosso banco de dados.<br>
+    Começamos pelo arquivo de configuração knex.js e para gerar este arquivo: npx kenx init.
+</p>
+
+<p>
+    Assim o arquivo knexfile.js é criado na rais fora de todas as pastas. Abrimos ele notamos que já vem pré configurado<br>
+    mas temos que configurar a nossa necissidade.<br>
+    Criamos uma pasta dentro de database => knex e dentro de knex => index.js e aqui vamos fazer a conexão com nosso banco de dados.
+</p>
+
+<p>
+    Temos a seguinte configuração:<br>
+        const config = require("../../../knexfile"); // aqui estamos importado no knexfile
+    const knex = require("knex"); // importamos o knex 
+
+    const connection = knex(config.development); // pegamos da bíblioteca nosso connection 
+
+    module.exports = connection; // estamos exportando
+</p>
+
+<h2>Migration</h2>
+
+<p>
+    Migrations é uma forma de versionar a base de dados.<br>
+    Migrations trabalha na manipulação da base de dados: criando, alterando ou removendo.
+</p>
+
+<p>
+    Quando formos usar as migrations vamos notar que no banco ele cria uma tabela e dentro dessa tabela ele <br>
+    ele vai armezenando o histórico de alteração.
+</p>
+
+<h2>Métodos de uma Migrations</h2>
+
+<p>
+    Up: método responsável por criar ou alterar algo no banco de dados.<br>
+    Down: responsável pelo rollback. Ou seja, desfazer as alterações realizadas pela migration.
+    Caso algo que fizermos der errado podemos fazer um Down da migration que voltamos para algo anterior, tipo commits.
+</p>
+
+<p>
+    npx knex migrate:make createMovie_notes<br>
+    Com isso criamos nosso arquivo nomeado como createMovie_notes. database => knex => migrations => createMovie_notes.js<br>
+    Dentro do arquivo createMovie_notes.js notamos que ele já vem com up e down então configuramos.<br>
+    Vamos criar a tabela de forma diferente que se fez na tabela users no sql.
+</p>
+
+<p>
+    NPM = Node package Manager é o gerenciador de pacotes padrão para Node.js<br>
+    Os pacotes e módulos necessários no projeto Node são instalados usando npm<br>
+    E também utilizamos o npm para execultar scripts e bibliotecas instaladas.
+</p>
+
+<p>
+    NPX = Node package Execute e vem com npm acima de versão 5.2<br>
+    É um executador de pacotes npm que pode execultar qualquer pacotes que você quiser do registro npm 
+    sem sequer instalar esse pacote.
+</p>

@@ -1,0 +1,53 @@
+
+<h1>Beekeeper</h1>
+
+<p>
+    Para visualizarmos esse arquivo bd temos que ir para ferramenta SGBD = sistema de gerenciamento de dados
+    temos vários no mercado, mas oque vamos usar aqui é o beekeerper
+</p>
+
+<p>
+    Abrindo ele vamos acessar o arquivo database.db e conectar.
+</p>
+
+<h2>Comandos mais usados</h2>
+
+<p>
+    Comandos DDL = CREATE - cria, DROP - deleta, ALTER altualiza
+</p>
+
+<ul>
+    <li>
+        CREATE TABLE users {
+            id INTEGER PRiMARY KEY AUTOINCREMENT
+            name VARCHAR,
+            email VARCHAR,
+            password VARCHAR,
+            avatar VARCHAR NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        }
+    </li>
+    <li>
+        ALTER TABLE users RENAME TO clients
+    </li>
+    <li>
+        ALTER TABLE users ADD status VARCHAR
+    </li>
+    <li>
+        ALTER TABLE users DROP COLUMN status
+    </li>
+</ul>
+
+<h2>SQL - Comandos DML</h2>
+
+<p>
+    Data Manipulation Language - CRUD
+</p>
+
+<p>
+    Create - cria => INSERT 
+    Reade - leitura => SELECT
+    Update - atualizar => UPDATE
+    Delete - deletar => DELETE
+</p>
