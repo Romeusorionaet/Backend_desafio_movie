@@ -3,6 +3,8 @@ exports.up = knex => knex.schema.createTable("notes", table => {
     table.text("title");
     table.text("description");
     table.text("rating");
+    table.text("season");
+    table.text("episode");
     table.integer("user_id").references("id").inTable("users");
 
     table.timestamp("created_at").default(knex.fn.now());
