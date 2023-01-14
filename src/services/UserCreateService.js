@@ -1,5 +1,5 @@
+const { hash, compare } = require("bcryptjs");
 const AppError = require("../utils/AppError");
-const {hash} = require("bcrypt");
 
 class UserCreateService {
     constructor(userRepository){
@@ -15,9 +15,7 @@ class UserCreateService {
         
         const hashedPassword = await hash(password, 8);
 
-        const userCreated = await this.userRepository.create({name, email, hashedPassword});
-
-        return userCreated;
+        await this.userRepository.create({name, email, password: hashedPassword});
     }
 }
 
