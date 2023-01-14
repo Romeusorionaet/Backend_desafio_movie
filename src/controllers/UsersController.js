@@ -40,6 +40,10 @@ class UsersController {
        if(password && !old_password) {
         throw new AppError("Você precisa informar a senha antiga para a nova senha");
        }
+
+       if(password && password.length < 6){
+        throw new AppError("A senha deve ter no mínimo 6 caracteres.")
+       }
     
        if(password && old_password) {
         const checkOldPassword = await compare(old_password, user.password);
