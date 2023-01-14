@@ -1,6 +1,6 @@
 const sqliteConnection = require("../database/sqlite");
 const AppError = require("../utils/AppError");
-const {hash, compare} = require("bcrypt");
+const {hash, compare} = require("bcryptjs");
 
 const UserRepository = require("../repositories/UserRepository");
 const UserCreateService = require("../services/UserCreateService");
