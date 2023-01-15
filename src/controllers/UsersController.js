@@ -4,6 +4,7 @@ const {hash, compare} = require("bcryptjs");
 
 const UserRepository = require("../repositories/UserRepository");
 const UserCreateService = require("../services/UserCreateService");
+const { reload } = require("pm2");
 
 class UsersController {
    async create(request, response) {
@@ -20,7 +21,7 @@ class UsersController {
     async update(request, response) {
         const {name, email, password, old_password} = request.body;
         const user_id = request.user.id;
-    
+      
         const database = await sqliteConnection();
         const user = await database.get("SELECT * FROM users WHERE id = (?)", [user_id]);
     
@@ -36,6 +37,10 @@ class UsersController {
     
        user.name = name ?? user.name; 
        user.email = email ?? user.email;
+
+       if(name.length > 10 || name.length <3){
+        throw new AppError("Nome deve ter no mínimo 3 caracteres ou no máximo 10 caracteres e não deve conter espaço.");
+       }
 
        if(password && !old_password) {
         throw new AppError("Você precisa informar a senha antiga para a nova senha");
